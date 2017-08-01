@@ -1,0 +1,35 @@
+.demo-basic {
+  padding: 0;
+
+}
+:host {
+  display: flex;
+  flex: 1;
+}
+.center{
+    width: 50%;
+}
+.demo-basic .mat-card-content {
+  padding: 16px;
+}
+.demo-full-width {
+  width: 100%;
+}
+
+.demo-card {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.example-container {
+  width: 500px;
+}
+
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

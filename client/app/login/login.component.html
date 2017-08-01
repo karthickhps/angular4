@@ -1,0 +1,30 @@
+<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme" >
+    <md-toolbar color="primary" width=100%>
+    <span>Simple Todo</span>
+    <span fxFlex></span>
+  </md-toolbar>
+ 
+        <md-progress-bar
+          class="example-margin"
+          [color]="color"
+          [mode]="mode"
+          >
+      </md-progress-bar>
+    
+<md-card class="demo-card demo-basic">
+  <md-toolbar color="primary">Login</md-toolbar>
+  <md-card-content>
+      <md-input-container class="demo-full-width">
+        <input mdInput [(ngModel)]="username" placeholder="username" type="text" >
+      </md-input-container>
+
+      <md-input-container class="demo-full-width">
+        <input mdInput [(ngModel)]="password" placeholder="password" type="password">
+      </md-input-container>
+  <div align="end">
+    <button md-button (click)="register()" >Signup</button>
+    <button md-button (click)="login()" color="accent">Login</button>
+  </div>
+  </md-card-content>
+</md-card>
+</div>

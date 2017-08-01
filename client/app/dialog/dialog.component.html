@@ -1,0 +1,23 @@
+<h3>Add Todo </h3>
+<form #form="ngForm" (ngSubmit)="dialogRef.close(form.value)" ngNativeValidate>
+  <div fxLayout="column" fxLayoutGap="8px" *ngIf="isDataAvailable">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <md-icon svgIcon="avatars:{{selectedAvatar}}" class="avatar"></md-icon>
+      <md-select name="avatar" fxFlex placeholder="Avatar" [(ngModel)]="selectedAvatar">
+        <md-option *ngFor="let avatar of avatars; let i = index;" [value]="avatar">Pokemon - {{i + 1}}</md-option>
+      </md-select>
+    </div>
+    <md-input-container>
+      <input mdInput [(ngModel)]="name" name="name" placeholder="Title" required>
+    </md-input-container>
+
+    <md-input-container>
+      <textarea mdInput [(ngModel)]="details" name="details" placeholder="Details" rows="15" cols="60" required></textarea>
+    </md-input-container>
+
+  </div>
+  <md-dialog-actions align="end">
+    <button md-button type="button" (click)="dialogRef.close()">Cancel</button>
+    <button md-button color="accent">Save Todo</button>
+  </md-dialog-actions>
+</form>

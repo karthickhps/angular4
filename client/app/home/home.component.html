@@ -1,0 +1,61 @@
+<div fxLayout="column" fxFlex [class.dark-theme]="isDarkTheme">
+
+  <md-toolbar color="primary">
+    <span>Simple Todo</span>
+
+    <!-- Filler that pushes the menu button to the end of the toolbar -->
+    <span fxFlex></span>
+
+
+    <button md-icon-button [mdMenuTriggerFor]="themeMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
+
+
+
+  </md-toolbar>
+
+  <md-sidenav-container fxFlex>
+    <md-sidenav mode="side" opened>
+          <md-nav-list>
+            <div *ngIf="isDataAvailable">
+            <md-list-item *ngFor="let user of users" (click)="selectedUser = user">
+              <md-icon svgIcon="avatars:{{user.avatar}}" class="avatar"></md-icon>
+              <span>{{user.name}}</span>
+            </md-list-item>
+            </div>
+          </md-nav-list>
+    </md-sidenav>
+    <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+      <div *ngIf="isDataAvailable">
+
+      <md-card fxFlex="80">
+        <md-icon svgIcon="avatars:{{selectedUser.avatar}}" class="avatar"></md-icon>
+        <h2>{{selectedUser.name}}</h2>
+        <p>{{selectedUser.details}}</p>
+              <button md-icon-button (click)="update(selectedUser)" >
+               <md-icon>edit</md-icon>
+              </button>
+              <button md-icon-button (click)="delete(selectedUser)">
+               <md-icon>delete</md-icon>
+              </button>
+      </md-card>
+
+      <md-card fxFlex fxLayout="column" fxLayoutGap="14px">
+        <md-slide-toggle (click)="isChecked(selectedUser)" [(ngModel)]="selectedUser.isChecked">Is Cheked?</md-slide-toggle>
+      </md-card>
+      </div>
+    </div>
+  </md-sidenav-container>
+
+  <md-menu #themeMenu x-position="before">
+    <button md-menu-item (click)="isDarkTheme = !isDarkTheme">Toggle Theme</button>
+    <button md-menu-item (click)="logout()">Logout</button>
+  </md-menu>
+
+
+  <button md-fab (click)="openAdminDialog()" class="fab-bottom-right">
+    <md-icon>add</md-icon>
+  </button>
+
+</div>
